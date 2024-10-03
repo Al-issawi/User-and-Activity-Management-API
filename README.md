@@ -26,80 +26,129 @@ the Project still need improvment.
 - Getting Started
    To get started with this project, follow these steps:
 
-- Clone the repository:
+## Configure application properties in src/main/resources/application.properties:
+      spring.datasource.url=jdbc:mysql://localhost:3306/activities_db
+      spring.datasource.username=your_username
+      spring.datasource.password=your_password
+      spring.jpa.hibernate.ddl-auto=update
 
-bash
-Copy code
-git clone https://github.com/yAl-issawi/User-and-Activity-Management-API
-Navigate to the project directory:
 
-bash
-  Copy code
-  cd user-activity-api
-  Build the project using Maven:
+# Activities API
 
-bash
-  Copy code
-  mvn clean install
-  Run the application:
+## Overview
+The Activities API allows users to register, manage, and participate in various activities. It is built using Spring Boot and uses MySQL as the database for storing user and activity information.
 
-bash
-    Copy code
-    mvn spring-boot:run
-    API Endpoints
-    User Registration
-    Endpoint: /appActivities/users/register
+## Features
+- User Registration
+- Activity Management
+- User Participation in Activities
 
-Method: POST
+## Technologies Used
+- Java 17
+- Spring Boot
+- MySQL
+- Jakarta Validation
 
-Request Body:
+## Database
+The application uses a MySQL database to store user and activity information. Ensure that you have a MySQL server running and create a database for the application.
 
-json
-Copy code
-{
-    "firstname": "mmm",
-    "lastname": "sss",
-    "age": 30,
-    "email": "mm.sss@example.com"
-}
+### Database Schema
+The following tables are used in the application:
 
-Response:
-json
-Copy code
-{
-    "message": "User registered successfully!"
-}
-Activity Registration
-Endpoint: /appActivities/activities
+1. **User**
+   - `id` (bigint, primary key, auto-increment)
+   - `first_name` (varchar(255), not null)
+   - `last_name` (varchar(255), not null)
+   - `age` (int, nullable)
+   - `email` (varchar(255), not null)
+   - `created_at` (datetime, not null)
 
-Method: POST
+2. **Activity**
+   - Define the fields for the Activity entity as needed.
 
-Request Body:
+## API Endpoints
 
-json
-Copy code
-{
-    "name": "Yoga Class",
-    "date": "2024-10-10T10:00:00",
-    "description": "A relaxing yoga session for beginners."
-}
+### User Registration
+- **POST** `/users/register`
+  - **Request Body:**
+    ```json
+    {
+      "first_name": "John",
+      "last_name": "Doe",
+      "age": 30,
+      "email": "john.doe@example.com"
+    }
+    ```
+  - **Response:**
+    - Success: `{"message": "User registered successfully!"}`
+    - Error: `{"error": "First name is required"}` (or other validation errors)
 
-Response:
+### Activity Management
+- **GET** `/activities` - Retrieve all activities.
+- **POST** `/activities` - Create a new activity.
+- **GET** `/activities/{id}` - Retrieve an activity by ID.
+- **PUT** `/activities/{id}` - Update an existing activity.
+- **DELETE** `/activities/{id}` - Delete an activity by ID.
 
-json
-Copy code
-{
-    "message": "Activity registered successfully!"
-}
+## Getting Started
 
-Running the Application
-Make sure you have Java and Maven installed on your machine. You can verify the installations with:
+### Prerequisites
+- Java 17
+- Maven
+- MySQL Server
 
-bash
-    Copy code
-    java -version
-    mvn -version
-    Once the app
+### Setup Instructions
+1. Clone the repository:
+   ```bash
+   git clone https://your-repo-url.git
+   cd activities
+
+
+### Method: POST
+
+1. Request Body:
+
+   {
+       "firstname": "mmm",
+       "lastname": "sss",
+       "age": 30,
+       "email": "mm.sss@example.com"
+   }
+   
+   Response:
+   
+      {
+          "message": "User registered successfully!"
+      }
+      Activity Registration
+      Endpoint: /appActivities/activities
+      
+      Method: POST
+      
+      Request Body:
+      
+      json
+         
+         {
+             "name": "Yoga Class",
+             "date": "2024-10-10T10:00:00",
+             "description": "A relaxing yoga session for beginners."
+         }
+         
+         Response:
+
+            json
+            {
+                "message": "Activity registered successfully!"
+            }
+            
+            Running the Application
+            Make sure you have Java and Maven installed on your machine. You can verify the installations with:
+
+         
+             java -version
+             mvn -version
+             Once the app
 
 ## Create database and table activity_user in mysql:
 
