@@ -71,7 +71,7 @@ The following tables are used in the application:
 ### User Registration
 - **POST** `/users/register`
   - **Request Body:**
-    ```json
+   
     {
       "first_name": "John",
       "last_name": "Doe",
@@ -99,7 +99,7 @@ The following tables are used in the application:
 
 ### Setup Instructions
 1. Clone the repository:
-   ```bash
+ 
    git clone https://your-repo-url.git
    cd activities
 
@@ -127,7 +127,7 @@ The following tables are used in the application:
       
       Request Body:
       
-      json
+ 
          
          {
              "name": "Yoga Class",
@@ -137,7 +137,6 @@ The following tables are used in the application:
          
          Response:
 
-            json
             {
                 "message": "Activity registered successfully!"
             }
@@ -170,14 +169,16 @@ mysql> select * from user;
 1 row in set (0.00 sec)
 
 ## in mysql need to create table to join the two tables.as many to many.
-mysql> select activity_user;
-ERROR 1054 (42S22): Unknown column 'activity_user' in 'field list'
-mysql> select * from activity_user;
+mysql> select * from  activity_user;
 +---------+-------------+
 | user_id | activity_id |
 +---------+-------------+
 |       6 |           5 |
+|       7 |           5 |
+|       8 |           5 |
 +---------+-------------+
-1 row in set (0.00 sec)
+3 rows in set (0.00 sec)
+
+mysql>
 
 
